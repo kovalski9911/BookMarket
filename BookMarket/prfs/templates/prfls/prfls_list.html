@@ -1,0 +1,39 @@
+{% extends 'base/base.html' %}
+
+{% block body %}
+
+<div class="container">
+{#    <h1>#}
+{#    <div align="left">{{ descr }}#}
+{#        {% if perms.products.add_book %}#}
+{#            <a class="btn btn-primary btn-sm active" href="{% url 'products:book-prod-create'%}">Добавить</a>#}
+{#        {% endif %}#}
+{#    </div>#}
+{#    </h1>#}
+{#    #}
+    {% for user in users %}
+        <div class="card" style="width: 70rem; height: 10rem; margin-bottom: 1rem">
+        <div class="card-body">
+{#        <img class="card-img-top"#}
+{#            src="{% if object.cover_image %}{{ object.cover_image.url }} {% endif %}"#}
+{#            alt="Card image cap"#}
+{#            style="height: 7rem; width: 5rem"#}
+{#            align="left">#}
+        <h5 class="card-title" align="left" style="padding-left: 6rem">
+        <a href="{% url 'prfls:prfls-view-for-managers' user.pk %}">{{ user.username }}</a>
+        </h5>
+        <p class="card-text" align="left" style="padding-left: 6rem">
+
+        <a class="btn btn-danger btn-sm active" href="{% url 'prfls:prfls-delete-for-managers' user.pk %}">Удалить</a>
+
+        </p>
+        </div>
+        </div>
+    {% endfor %}
+    <div style="margin-top: 1rem">
+        {% include 'base/paginator/paginator-base.html' %}
+    </div>
+</div>
+
+
+{% endblock body %}

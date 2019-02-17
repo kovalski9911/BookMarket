@@ -29,9 +29,9 @@
       </button>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item" href="{% url 'AdminShopDashboard' %}">Dashboard</a>
-{#        <div class="dropdown-divider"></div>#}
         <a class="dropdown-item" href="{% url 'orders:list-orders' %}">Заказы</a>
-          <a class="dropdown-item" href="{% url 'reference:ref-all-list' %}">Справочники</a>
+        <a class="dropdown-item" href="{% url 'reference:ref-all-list' %}">Справочники</a>
+        <a class="dropdown-item" href="{% url 'prfls:prfls-list' %}">Клиенты</a>
       </div>
     </div>
   {% endif %}
@@ -51,7 +51,7 @@
         {{ user }}
       </button>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="{% url 'prfls:prfls-view' user.pk %}">Профиль</a>
+        <a class="dropdown-item" href="{% url 'prfls:prfls-view' %}">Профиль</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="{% url 'logout' %}">Выйти</a>
       </div>

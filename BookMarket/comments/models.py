@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 
 # Create your models here.
 
@@ -25,8 +26,9 @@ class Comments(models.Model):
         on_delete=models.CASCADE
     )
     timestamp = models.DateTimeField(
-        auto_now=False,
-        auto_now_add=True,
+        # auto_now=False,
+        # auto_now_add=True,
+        default=timezone.now()
     )
 
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)

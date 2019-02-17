@@ -2,8 +2,6 @@ from django.db import models
 from reference.models import Author, Series, Genre, Publisher, Manufacturer
 import datetime
 
-# Create your models here.
-
 
 class Book(models.Model):
 
@@ -20,6 +18,7 @@ class Book(models.Model):
         verbose_name='обложка',
         default=None,
         blank=True
+        # upload_to='covers/'
     )
 
     price = models.DecimalField(
