@@ -1,18 +1,7 @@
 from django.views.generic import TemplateView
 from reference.models import Genre
 from products.models import Book
-from django.conf import settings
 import datetime
-
-
-class CoreAdminTemplateView(TemplateView):
-    template_name = 'admincore/staff-home.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['SITE_NAME'] = settings.SITE_NAME
-        context['active'] = 'admin_core'
-        return context
 
 
 class DashboardAdminView(TemplateView):

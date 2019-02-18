@@ -10,7 +10,7 @@
 <style type="text/css">
   body {
   height: 100%;
-  text-align: center;
+  text-align: left;
   background: transparent;
   padding-top: 60px
   }
@@ -28,8 +28,11 @@
 
   {% include 'base/navbar/user_navbar.html' %}
 
+<div class="container">
   {% block body %}
   {% endblock body %}
+</div>
+
 </body>
 </html>
 

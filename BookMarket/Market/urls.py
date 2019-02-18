@@ -19,6 +19,7 @@ from django.conf.urls.static import static
 from core.views import HomeTemplateView, AboutTemplateView, DeliveryTemplateView
 from django.conf import settings
 from search.views import MakeSearchView
+from prfs.views import RegisterView
 
 
 urlpatterns = [
@@ -36,6 +37,8 @@ urlpatterns = [
     path('makesearch/', MakeSearchView.as_view(), name='makeSearch'),
 
     path('accounts/', include('django.contrib.auth.urls')),
+
+    path('register/', RegisterView.as_view(),  name='register'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

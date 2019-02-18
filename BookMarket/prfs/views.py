@@ -1,8 +1,8 @@
-from django.views.generic import DetailView, FormView, ListView, DeleteView
+from django.views.generic import DetailView, FormView, ListView, DeleteView, CreateView
 from .models import Prf
 from django.contrib.auth.models import User, Group
 from django.urls import reverse, reverse_lazy
-from .forms import PrflUpdateForm
+from .forms import PrflUpdateForm, RegisterForm
 from cart.models import Cart
 from products.models import Book
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
@@ -129,3 +129,10 @@ class PrflDeleteForManagersView(PermissionRequiredMixin, DeleteView):
     template_name = 'prfls/prfls_delete-for-managers.html'
     success_url = reverse_lazy('prfls:prfls-list')
     permission_required = 'prfs.delete_prf'
+
+
+class RegisterView(CreateView):
+    model = User
+    form_class = RegisterForm
+    template_name = 'prfls/register.html'
+    success_url = reverse_lazy('Core')
