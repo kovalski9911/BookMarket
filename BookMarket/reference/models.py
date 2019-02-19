@@ -1,11 +1,8 @@
 from django.db import models
-from django.urls import reverse_lazy
-
-# Create your models here.
 
 
 class Author(models.Model):
-    # reverse_lazy не работает
+
     lst_url = 'reference:author-ref-list'
 
     class Meta:

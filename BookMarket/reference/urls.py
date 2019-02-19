@@ -1,20 +1,3 @@
-"""Market URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/2.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-
-from django.contrib import admin
 from django.urls import path
 
 from reference.views import (
@@ -23,7 +6,6 @@ from reference.views import (
     AuthorRefDetailView,
     AuthorRefUpdateView,
     AuthorRefDeleteView,
-
 
     GenreRefCreateView,
     GenreRefListView,
@@ -51,16 +33,15 @@ from reference.views import (
 
     ListReferenceTemplateView,
 
+    DashboardView,
+
     OrderStatusRefListView,
     OrderStatusRefCreateView,
     OrderStatusRefUpdateView,
     OrderStatusRefDetailView,
     OrderStatusRefDeleteView,
-
-
 )
 
-# для иерархии
 app_name = 'reference'
 
 urlpatterns = [
@@ -100,6 +81,8 @@ urlpatterns = [
     path('manufacturer-ref-delete/<int:pk>/', ManufactorerRefDeleteView.as_view(), name='manufacturer-ref-delete'),
 
     path('ref-all-list/', ListReferenceTemplateView.as_view(), name='ref-all-list'),
+
+    path('dashboard/', DashboardView.as_view(), name='dashboard'),
 
     path('order-status-ref-list/', OrderStatusRefListView.as_view(), name='order-status-ref-list'),
     path('order-status-ref-create/', OrderStatusRefCreateView.as_view(), name='order-status-ref-create'),

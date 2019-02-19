@@ -4,7 +4,6 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 
-# Create your models here.
 
 User = get_user_model()
 
@@ -26,8 +25,6 @@ class Comments(models.Model):
         on_delete=models.CASCADE
     )
     timestamp = models.DateTimeField(
-        # auto_now=False,
-        # auto_now_add=True,
         default=timezone.now()
     )
 

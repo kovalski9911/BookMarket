@@ -1,10 +1,12 @@
-from django.shortcuts import render
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, TemplateView, DetailView
 from .forms import AuthorRefForm, GenreRefForm, SeriesRefForm, PublisherRefForm, ManufacturerRefForm, OrderStatusRefForm
 from .models import Author, Genre, Series, Publisher, Manufacturer, OrderStatus
 from django.urls import reverse_lazy
 from django.apps import apps
 from random import choice
+from reference.models import Genre
+from products.models import Book
+import datetime
 from django.contrib.auth.mixins import PermissionRequiredMixin
 
 
@@ -350,8 +352,9 @@ class ManufactorerRefDeleteView(PermissionRequiredMixin, DeleteView):
 
 
 # Класс для отображения всех моделей приложения reference
-class ListReferenceTemplateView(TemplateView):
+class ListReferenceTemplateView(PermissionRequiredMixin, TemplateView):
     template_name = 'reference/ref_all_list.html'
+    permission_required = 'reference.add_author'
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
@@ -431,4 +434,47 @@ class OrderStatusRefDeleteView(PermissionRequiredMixin, DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['ref_action'] = 'Удаление cтатуса заказа'
+        return context
+
+
+class DashboardView(PermissionRequiredMixin, TemplateView):
+    template_name = 'reference/dashboard.html'
+    permission_required = 'reference.add_author'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['active'] = 'dashboard'
+
+        # товаров всего
+        context['product_count'] = len(Book.objects.all())
+
+        # активных товаров
+        context['av_product_count'] = len(Book.objects.filter(available=True))
+
+        # добавлено вчера
+        today = datetime.date.today()
+        day = datetime.timedelta(days=1)
+        yesterday = today - day
+        context['cr_yesterday'] = len(Book.objects.filter(created=yesterday))
+
+        # добавлено за прошлый месяц
+        last_month = today.month - 1 if today.month > 1 else 12
+        last_month_year = today.year if today.month > last_month else today.year - 1
+        context['cr_last_month'] = len(Book.objects.filter(created__year=last_month_year, created__month=last_month))
+
+        # добавлено за текущий месяц
+        now_month = today.month
+        context['cr_now_month'] = len(Book.objects.filter(created__month=now_month))
+
+        # товаров в каждом жанре (разделе)
+        book_genre = {}
+        genres = Genre.objects.all()
+        for obj in genres:
+            book_genre.update({obj.name: len(Book.objects.filter(genre=obj))})
+        context['book_genre_count'] = book_genre
+
+        # всего категорий (жанров)
+        context['genre_count'] = len(Genre.objects.all())
+
         return context

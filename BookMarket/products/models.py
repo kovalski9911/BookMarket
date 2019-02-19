@@ -1,6 +1,7 @@
 from django.db import models
 from reference.models import Author, Series, Genre, Publisher, Manufacturer
 import datetime
+from django.utils import timezone
 
 
 class Book(models.Model):
@@ -119,7 +120,7 @@ class Book(models.Model):
 
     created = models.DateField(
         verbose_name='дата внесения в каталог',
-        default=datetime.date.today(),
+        default=timezone.now(),
         blank=True,
         null=True
     )
@@ -140,6 +141,3 @@ class Book(models.Model):
 
     def __str__(self):
         return self.name
-
-
-

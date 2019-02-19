@@ -9,15 +9,14 @@
 {% block body %}
   <div class="container">
     {% if form.errors %}
-      <p>Your username and password didn't match. Please try again.</p>
+      <p>Ваше имя пользователя и пароль не совпадают. Пожалуйста, попробуйте еще раз.</p>
     {% endif %}
 
     {% if next %}
       {% if user.is_authenticated %}
-        <p>Your account doesn't have access to this page. To proceed,
-        please login with an account that has access.</p>
+        <p> Ваш аккаунт не имеет доступ к этой странице. Чтобы продолжить, войдите под нужной учетной записью</p>
       {% else %}
-        <p>Please login to see this page.</p>
+        <p>Войдите, что бы просматривать эту страницу</p>
       {% endif %}
     {% endif %}
 

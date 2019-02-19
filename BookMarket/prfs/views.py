@@ -46,16 +46,17 @@ class PrflUpdateView(LoginRequiredMixin, FormView):
         )
         if self.request.method == 'POST':
             my_form = PrflUpdateForm(self.request.POST)
-            user.username = my_form['username'].value()
-            user.first_name = my_form['first_name'].value()
-            user.last_name = my_form['last_name'].value()
-            user.email = my_form['email'].value()
-            us_addr = Prf.objects.get(customer_id=user.id)
-            us_addr.delivery_address = my_form['delivery_address'].value()
-            us_addr.phone_number = my_form['phone_number'].value()
-            us_addr.save()
-            user.save()
-            return my_form
+            if my_form.is_valid():
+                user.username = my_form['username'].value()
+                user.first_name = my_form['first_name'].value()
+                user.last_name = my_form['last_name'].value()
+                user.email = my_form['email'].value()
+                us_addr = Prf.objects.get(customer_id=user.id)
+                us_addr.delivery_address = my_form['delivery_address'].value()
+                us_addr.phone_number = my_form['phone_number'].value()
+                us_addr.save()
+                user.save()
+                return my_form
         else:
             my_form = PrflUpdateForm(
                 initial={'delivery_address': user.prf.delivery_address,
@@ -101,16 +102,17 @@ class PrflUpdateForManagersView(PermissionRequiredMixin, PrflUpdateView):
         )
         if self.request.method == 'POST':
             my_form = PrflUpdateForm(self.request.POST)
-            user.username = my_form['username'].value()
-            user.first_name = my_form['first_name'].value()
-            user.last_name = my_form['last_name'].value()
-            user.email = my_form['email'].value()
-            us_addr = Prf.objects.get(customer_id=user.id)
-            us_addr.delivery_address = my_form['delivery_address'].value()
-            us_addr.phone_number = my_form['phone_number'].value()
-            us_addr.save()
-            user.save()
-            return my_form
+            if my_form.is_valid():
+                user.username = my_form['username'].value()
+                user.first_name = my_form['first_name'].value()
+                user.last_name = my_form['last_name'].value()
+                user.email = my_form['email'].value()
+                us_addr = Prf.objects.get(customer_id=user.id)
+                us_addr.delivery_address = my_form['delivery_address'].value()
+                us_addr.phone_number = my_form['phone_number'].value()
+                us_addr.save()
+                user.save()
+                return my_form
         else:
             my_form = PrflUpdateForm(
                 initial={'delivery_address': user.prf.delivery_address,
