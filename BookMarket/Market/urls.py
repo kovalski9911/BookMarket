@@ -24,7 +24,6 @@ from prfs.views import RegisterView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('admin-shop/', include('admincore.urls')),
     path('reference/', include('reference.urls')),
     path('products/', include('products.urls')),
     path('', HomeTemplateView.as_view(), name='Core'),

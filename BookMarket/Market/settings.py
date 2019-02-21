@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'reference',
     'products',
     'core',
-    'admincore',
     'cart',
     'orders',
     'prfs',

@@ -83,6 +83,7 @@ class ListCartView(TemplateView):
             description='Зака находится в обработке'
         )
 
+        # добавить проверку на зарегестрированного юзера
         us_prfl = Prf.objects.get(customer_id=usr.id)
         data = {'cart': cart,
                 'status': order_status,
