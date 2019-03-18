@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'comments',
     'search',
 
+    # third party
     'crispy_forms',
     'debug_toolbar',
     'rest_framework',
@@ -65,6 +66,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10
+}
 
 ROOT_URLCONF = 'Market.urls'
 

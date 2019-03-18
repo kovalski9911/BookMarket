@@ -1,5 +1,4 @@
 from django.urls import path
-
 from reference.views import (
     AuthorRefCreateView,
     AuthorRefListView,
@@ -41,8 +40,21 @@ from reference.views import (
     OrderStatusRefDetailView,
     OrderStatusRefDeleteView,
 )
+from .api import *
+
+from rest_framework import routers
+
 
 app_name = 'reference'
+
+router = routers.DefaultRouter()
+router.register(r'authors', AuthorViewSet, 'api-authors')
+router.register(r'genres', GenreViewSet, 'api-genres')
+router.register(r'series', SeriesViewSet, 'api-series')
+router.register(r'publishers', PublisherViewSet, 'api-publishers')
+router.register(r'manufacturers', ManufacturerViewSet, 'api-manufacturers')
+router.register(r'order-statuses', OrderStatusViewSet, 'api-orderStatuses')
+
 
 urlpatterns = [
     # url авторов
@@ -90,3 +102,5 @@ urlpatterns = [
     path('order-status-ref-detail/<int:pk>/', OrderStatusRefDetailView.as_view(), name='order-status-ref-detail'),
     path('order-status-ref-delete/<int:pk>/', OrderStatusRefDeleteView.as_view(), name='order-status-ref-delete'),
 ]
+
+urlpatterns += router.urls
