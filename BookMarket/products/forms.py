@@ -28,8 +28,6 @@ class ProductsForm(forms.ModelForm):
             'stock',
             'available',
             'rating',
-            'created',
-            'updated'
         ]
 
     def clean_isbn(self):
@@ -37,7 +35,3 @@ class ProductsForm(forms.ModelForm):
         if not re.match(r'(\d{3})-(\d{1})-(\d{2,7})-(\d{1,6})-(\d{1})', isbn):
             raise ValidationError('Введите ISBN в формате xxx-x-xx-x-x')
         return isbn
-
-
-
-

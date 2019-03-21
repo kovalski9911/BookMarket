@@ -1,7 +1,5 @@
 from django.db import models
 from reference.models import Author, Series, Genre, Publisher, Manufacturer
-import datetime
-from django.utils import timezone
 
 
 class Book(models.Model):
@@ -120,16 +118,12 @@ class Book(models.Model):
 
     created = models.DateField(
         verbose_name='дата внесения в каталог',
-        default=timezone.now(),
-        blank=True,
-        null=True
+        auto_now_add=True
     )
 
     updated = models.DateField(
         verbose_name='дата последнего изменения карточки',
-        default=None,
-        blank=True,
-        null=True
+        auto_now=True
     )
 
     def get_field(self):

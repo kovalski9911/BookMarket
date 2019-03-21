@@ -5,36 +5,36 @@ from .models import *
 
 
 class AuthorViewSet(viewsets.ModelViewSet):
-    """вьюсет для сериализованной модели Автор"""
+    """ViewSet for Authors"""
     serializer_class = AuthorSerializer
     queryset = Author.objects.all()
 
 
 class GenreViewSet(viewsets.ModelViewSet):
-    """вьюсет для сериализованной модели Жанр"""
+    """ViewSet for Genres"""
     serializer_class = GenreSerializer
     queryset = Genre.objects.all()
 
 
 class SeriesViewSet(viewsets.ModelViewSet):
-    """вьюсет для сериализованной модели Серии"""
+    """ViewSet for Series"""
     serializer_class = SeriesSerializer
     queryset = Series.objects.all()
 
 
 class PublisherViewSet(viewsets.ModelViewSet):
-    """вьюсет для сериализованной модели Издательство"""
+    """ViewSet for Publishers"""
     serializer_class = PublisherSerializer
     queryset = Publisher.objects.all()
 
 
 class ManufacturerViewSet(viewsets.ModelViewSet):
-    """вьюсет для сериализованной модели Изгатовитель"""
+    """ViewSet for Manufacturers"""
     serializer_class = ManufacturerSerializer
     queryset = Manufacturer.objects.all()
 
 
 class OrderStatusViewSet(viewsets.ModelViewSet):
-    """вьюсет для сериализованной модели Статус заказа"""
+    """ViewSet for Order statuses"""
     serializer_class = OrderStatusSerializer
     queryset = OrderStatus.objects.all()

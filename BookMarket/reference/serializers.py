@@ -3,7 +3,7 @@ from .models import *
 
 
 class AuthorSerializer(serializers.ModelSerializer):
-    """сериализация модели Автор"""
+    """Serializer for model Author"""
 
     class Meta:
         model = Author
@@ -14,7 +14,7 @@ class AuthorSerializer(serializers.ModelSerializer):
 
 
 class GenreSerializer(serializers.ModelSerializer):
-    """сериализация модели Жанр"""
+    """Serializer for model Genre"""
 
     class Meta:
         model = Genre
@@ -25,7 +25,7 @@ class GenreSerializer(serializers.ModelSerializer):
 
 
 class SeriesSerializer(serializers.ModelSerializer):
-    """сериализация модели Серия"""
+    """Serializer for model Series"""
 
     class Meta:
         model = Series
@@ -36,7 +36,7 @@ class SeriesSerializer(serializers.ModelSerializer):
 
 
 class PublisherSerializer(serializers.ModelSerializer):
-    """сериализация модели Издательство"""
+    """Serializer for model Publisher"""
 
     class Meta:
         model = Publisher
@@ -47,7 +47,7 @@ class PublisherSerializer(serializers.ModelSerializer):
 
 
 class ManufacturerSerializer(serializers.ModelSerializer):
-    """сериализация модели Изгатовитель"""
+    """Serializer for model Manufacturer"""
 
     class Meta:
         model = Manufacturer
@@ -58,7 +58,7 @@ class ManufacturerSerializer(serializers.ModelSerializer):
 
 
 class OrderStatusSerializer(serializers.ModelSerializer):
-    """сериализация модели Статус заказа"""
+    """Serializer for model Order Status"""
 
     class Meta:
         model = OrderStatus

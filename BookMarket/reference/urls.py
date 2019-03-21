@@ -40,7 +40,7 @@ from reference.views import (
     OrderStatusRefDetailView,
     OrderStatusRefDeleteView,
 )
-from .api import *
+from .apiview import *
 
 from rest_framework import routers
 
@@ -48,12 +48,12 @@ from rest_framework import routers
 app_name = 'reference'
 
 router = routers.DefaultRouter()
-router.register(r'authors', AuthorViewSet, 'api-authors')
-router.register(r'genres', GenreViewSet, 'api-genres')
-router.register(r'series', SeriesViewSet, 'api-series')
-router.register(r'publishers', PublisherViewSet, 'api-publishers')
-router.register(r'manufacturers', ManufacturerViewSet, 'api-manufacturers')
-router.register(r'order-statuses', OrderStatusViewSet, 'api-orderStatuses')
+router.register('authors', AuthorViewSet, 'api-authors')
+router.register('genres', GenreViewSet, 'api-genres')
+router.register('series', SeriesViewSet, 'api-series')
+router.register('publishers', PublisherViewSet, 'api-publishers')
+router.register('manufacturers', ManufacturerViewSet, 'api-manufacturers')
+router.register('order-statuses', OrderStatusViewSet, 'api-orderStatuses')
 
 
 urlpatterns = [
