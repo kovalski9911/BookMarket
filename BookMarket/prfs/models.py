@@ -36,7 +36,12 @@ class Prf(models.Model):
 def create_profile(sender, instance, **kwargs):
     if kwargs['created']:
         user_profile = Prf.objects.create(customer=instance)
-        managers_group = Group.objects.get(name='Customers')
+
+        # Дописать проверку на добавление суперпользователя!!!
+
+        managers_group, created = Group.objects.get_or_create(
+            name='Customers'
+        )
         instance.groups.add(managers_group)
 
 
