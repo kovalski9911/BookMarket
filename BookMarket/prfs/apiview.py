@@ -2,12 +2,14 @@ from rest_framework.views import APIView
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
-from  rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from django.contrib.auth import authenticate
 from django.contrib.auth import get_user_model
 from django.http import Http404
 
+
+from .permissions import IsOwnerOrIsStaffPermission, IsStaffOnly
 from .serializers import UserSerializer, RegisterUserSerializer
 
 
@@ -15,6 +17,7 @@ User = get_user_model()
 
 
 @api_view(['GET'])
+@permission_classes((IsAuthenticated, IsStaffOnly, ))
 def users_list_api_view(request):
     """List of all profiles"""
     users = User.objects.all()
@@ -23,16 +26,17 @@ def users_list_api_view(request):
 
 
 class UserDetailApiView(APIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, IsOwnerOrIsStaffPermission, )
 
-    def get_object(self, pk):
-        try:
-            return User.objects.get(pk=pk)
-        except User.DoesNotExist:
-            raise Http404
+    # def get_object(self, pk):
+    #     print('get_object is worked')
+    #     try:
+    #         return User.objects.get(pk=pk)
+    #     except User.DoesNotExist:
+    #         raise Http404
 
     def get(self, request, pk, format=None):
-        user = self.get_object(pk)
+        user = User.objects.get(pk=pk)
         serializer = UserSerializer(user)
         return Response(serializer.data)
 
