@@ -1,5 +1,6 @@
 from django.views.generic import TemplateView
 from django.conf import settings
+
 from products.models import Book
 
 

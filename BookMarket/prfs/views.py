@@ -1,11 +1,17 @@
-from django.views.generic import DetailView, FormView, ListView, DeleteView, CreateView
-from .models import Prf
+from django.views.generic import (
+    DetailView,
+    FormView,
+    ListView,
+    DeleteView,
+    CreateView)
 from django.contrib.auth.models import User, Group
 from django.urls import reverse, reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+
+from .models import Prf
 from .forms import PrflUpdateForm, RegisterForm
 from cart.models import Cart
 from products.models import Book
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 
 class PrflDetailView(LoginRequiredMixin, DetailView):

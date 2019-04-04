@@ -1,4 +1,7 @@
 from django.urls import path
+
+from rest_framework import routers
+
 from reference.views import (
     AuthorRefCreateView,
     AuthorRefListView,
@@ -41,8 +44,6 @@ from reference.views import (
     OrderStatusRefDeleteView,
 )
 from .apiview import *
-
-from rest_framework import routers
 
 
 app_name = 'reference'

@@ -1,7 +1,9 @@
 from django import forms
-from products.models import Book
 from django.core.exceptions import ValidationError
+
 import re
+
+from products.models import Book
 
 
 class ProductsForm(forms.ModelForm):

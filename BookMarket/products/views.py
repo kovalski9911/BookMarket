@@ -1,8 +1,14 @@
-from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
-from products.forms import ProductsForm
-from products.models import Book
+from django.views.generic import (
+    ListView,
+    CreateView,
+    DetailView,
+    UpdateView,
+    DeleteView)
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import PermissionRequiredMixin
+
+from .forms import ProductsForm
+from .models import Book
 
 
 class BookProdListView(ListView):
@@ -19,7 +25,6 @@ class BookProdListView(ListView):
         context['descr'] = 'книги'
         context['get_create_url'] = reverse_lazy('products:book-prod-create')
         context['active'] = 'products'
-
         return context
 
 

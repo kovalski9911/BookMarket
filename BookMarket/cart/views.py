@@ -1,9 +1,10 @@
 from django.views.generic import UpdateView, TemplateView, DeleteView
+from django.urls import reverse_lazy
+
 from .forms import AddToCartForm
 from orders.forms import OrderForm
 from .models import ProductsInCart, Cart
 from products.models import Book
-from django.urls import reverse_lazy
 from reference.models import OrderStatus
 from prfs.models import Prf
 

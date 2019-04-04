@@ -16,8 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
-from core.views import HomeTemplateView, AboutTemplateView, DeliveryTemplateView
 from django.conf import settings
+
+from core.views import (
+    HomeTemplateView,
+    AboutTemplateView,
+    DeliveryTemplateView)
 from search.views import MakeSearchView
 from prfs.views import RegisterView
 

@@ -1,6 +1,11 @@
 from rest_framework import serializers
 
-from reference.serializers import *
+from reference.serializers import (
+    AuthorSerializer,
+    GenreSerializer,
+    SeriesSerializer,
+    PublisherSerializer,
+    ManufacturerSerializer)
 from .models import Book
 
 

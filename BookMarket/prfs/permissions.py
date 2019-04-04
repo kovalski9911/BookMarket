@@ -1,6 +1,7 @@
-from rest_framework import permissions
 from django.contrib.auth import get_user_model
 from django.http import Http404
+
+from rest_framework import permissions
 
 
 User = get_user_model()

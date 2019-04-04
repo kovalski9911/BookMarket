@@ -1,5 +1,12 @@
 from django import forms
-from reference.models import Author, Genre, Series, Publisher, Manufacturer, OrderStatus
+
+from .models import (
+    Author,
+    Genre,
+    Series,
+    Publisher,
+    Manufacturer,
+    OrderStatus)
 
 
 class AuthorRefForm(forms.ModelForm):

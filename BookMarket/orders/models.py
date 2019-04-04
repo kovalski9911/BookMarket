@@ -1,8 +1,7 @@
 from django.db import models
+
 from cart.models import Cart
 from reference.models import OrderStatus
-
-# Create your models here.
 
 
 class Orders(models.Model):

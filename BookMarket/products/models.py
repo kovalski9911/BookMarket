@@ -1,4 +1,5 @@
 from django.db import models
+
 from reference.models import Author, Series, Genre, Publisher, Manufacturer
 
 

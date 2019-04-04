@@ -1,13 +1,34 @@
-from django.views.generic import CreateView, UpdateView, DeleteView, ListView, TemplateView, DetailView
-from .forms import AuthorRefForm, GenreRefForm, SeriesRefForm, PublisherRefForm, ManufacturerRefForm, OrderStatusRefForm
-from .models import Author, Genre, Series, Publisher, Manufacturer, OrderStatus
+from django.views.generic import (
+    CreateView,
+    UpdateView,
+    DeleteView,
+    ListView,
+    TemplateView,
+    DetailView)
 from django.urls import reverse_lazy
 from django.apps import apps
+from django.contrib.auth.mixins import PermissionRequiredMixin
+
 from random import choice
+import datetime
+
+from .forms import (
+    AuthorRefForm,
+    GenreRefForm,
+    SeriesRefForm,
+    PublisherRefForm,
+    ManufacturerRefForm,
+    OrderStatusRefForm)
+from .models import (
+    Author,
+    Genre,
+    Series,
+    Publisher,
+    Manufacturer,
+    OrderStatus)
+
 from reference.models import Genre
 from products.models import Book
-import datetime
-from django.contrib.auth.mixins import PermissionRequiredMixin
 
 
 BTN_BLOCKS = [

@@ -1,6 +1,7 @@
 from django.views.generic import TemplateView
-from products.models import Book
 from django.db.models import Q
+
+from products.models import Book
 
 
 class MakeSearchView(TemplateView):
@@ -15,7 +16,6 @@ class MakeSearchView(TemplateView):
             Q(name__icontains=q) &
             Q(available=True)
         )
-        # если поле поиска не пустое
         if q:
             context['results'] = sr
         context['search'] = q
