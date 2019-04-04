@@ -1,5 +1,4 @@
 from django.urls import path
-
 from rest_framework import routers
 
 from products.views import (
@@ -10,7 +9,6 @@ from products.views import (
     BookProdDeleteView,
 )
 from .apiview import BookViewSet
-
 
 app_name = 'products'
 

@@ -1,12 +1,12 @@
-from django.views.generic import UpdateView, TemplateView, DeleteView
 from django.urls import reverse_lazy
+from django.views.generic import UpdateView, TemplateView, DeleteView
 
-from .forms import AddToCartForm
 from orders.forms import OrderForm
-from .models import ProductsInCart, Cart
+from prfs.models import Prf
 from products.models import Book
 from reference.models import OrderStatus
-from prfs.models import Prf
+from .forms import AddToCartForm
+from .models import ProductsInCart, Cart
 
 
 class AddProductCartView(UpdateView):

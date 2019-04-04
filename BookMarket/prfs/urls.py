@@ -1,5 +1,11 @@
 from django.urls import path
 
+from .apiview import (
+    users_list_api_view,
+    register_user_api_view,
+    login_user_api_view,
+    UserDetailApiView,
+)
 from .views import (
     PrflDetailView,
     PrflUpdateView,
@@ -8,14 +14,6 @@ from .views import (
     PrflUpdateForManagersView,
     PrflDeleteForManagersView
 )
-
-from .apiview import (
-    users_list_api_view,
-    register_user_api_view,
-    login_user_api_view,
-    UserDetailApiView,
-)
-
 
 app_name = 'prfls'
 

@@ -1,7 +1,7 @@
+import re
+
 from django import forms
 from django.core.exceptions import ValidationError
-
-import re
 
 from products.models import Book
 

@@ -1,3 +1,9 @@
+import datetime
+from random import choice
+
+from django.apps import apps
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.urls import reverse_lazy
 from django.views.generic import (
     CreateView,
     UpdateView,
@@ -5,13 +11,9 @@ from django.views.generic import (
     ListView,
     TemplateView,
     DetailView)
-from django.urls import reverse_lazy
-from django.apps import apps
-from django.contrib.auth.mixins import PermissionRequiredMixin
 
-from random import choice
-import datetime
-
+from products.models import Book
+from reference.models import Genre
 from .forms import (
     AuthorRefForm,
     GenreRefForm,
@@ -21,15 +23,10 @@ from .forms import (
     OrderStatusRefForm)
 from .models import (
     Author,
-    Genre,
     Series,
     Publisher,
     Manufacturer,
     OrderStatus)
-
-from reference.models import Genre
-from products.models import Book
-
 
 BTN_BLOCKS = [
     "btn btn-primary",

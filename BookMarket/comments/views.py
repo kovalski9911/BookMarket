@@ -1,5 +1,6 @@
-from django.views.generic.base import RedirectView
 from django.contrib.contenttypes.models import ContentType
+from django.views.generic.base import RedirectView
+
 from .models import Comments
 
 

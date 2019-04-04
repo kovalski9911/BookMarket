@@ -1,11 +1,11 @@
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.urls import reverse_lazy
 from django.views.generic import (
     ListView,
     CreateView,
     DetailView,
     UpdateView,
     DeleteView)
-from django.urls import reverse_lazy
-from django.contrib.auth.mixins import PermissionRequiredMixin
 
 from .forms import ProductsForm
 from .models import Book

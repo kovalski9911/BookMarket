@@ -1,9 +1,7 @@
+import requests
 from django import template
 
-import requests
-
 from cart.models import Cart
-
 
 register = template.Library()
 

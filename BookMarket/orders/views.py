@@ -1,15 +1,15 @@
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.urls import reverse_lazy
 from django.views.generic import (
     CreateView,
     DetailView,
     ListView,
     UpdateView,
     DeleteView)
-from django.urls import reverse_lazy
-from django.contrib.auth.mixins import PermissionRequiredMixin
 
-from .models import Orders
-from .forms import OrderForm, UpdateOrderForm
 from reference.models import OrderStatus
+from .forms import OrderForm, UpdateOrderForm
+from .models import Orders
 
 
 class CreateOrderView(CreateView):

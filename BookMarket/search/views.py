@@ -1,5 +1,5 @@
-from django.views.generic import TemplateView
 from django.db.models import Q
+from django.views.generic import TemplateView
 
 from products.models import Book
 
